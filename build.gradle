@@ -15,6 +15,9 @@ repositories {
 dependencies {
 	// SQL
 	implementation 'mysql:mysql-connector-java'
+	// Lombok
+    annotationProcessor("org.projectlombok:lombok")
+    compileOnly("org.projectlombok:lombok")
 	// JPA
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-mustache'
