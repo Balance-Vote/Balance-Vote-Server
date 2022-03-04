@@ -28,8 +28,17 @@ public class VoteController {
      * @author DongGeon Lee
      */
     @GetMapping("/post/vote-post")
-    public Page<VotePost> getAllVotePost(Pageable pageable){
+    public Page<VotePost> getAllVotePost(String postId, Pageable pageable){
         return votePostRepository.findAll(pageable);
+    }
+
+    /**
+     * Search vote post.
+     * @author DongGeon Lee
+     */
+    @GetMapping("/post/vote-post/{postId}")
+    public VotePost getVotePost(String postId){
+        return votePostRepository.findByPostId(postId).orElse(null);
     }
 
     /**
