@@ -41,7 +41,7 @@ public class VoteController {
         if (count < 1) {
             count = 1;
         }
-        return votePostRepository.findtwetgweg(count);
+        return votePostRepository.findAllByVoteCount(count);
     }
 
     /**
@@ -53,7 +53,7 @@ public class VoteController {
         // TODO: verify uuid.
         VotePost voteToPost = newVoteForm.toEntity();
         // TODO: create new unique postid.
-        voteToPost.setPostId(voteToPost.getUuid() + voteToPost.getSelectionOne() + voteToPost.getSelectionTwo());
+        voteToPost.setPostId(voteToPost.getUuid() + System.currentTimeMillis());
         String voteId = votePostRepository.save(voteToPost).getPostId();
 
         return voteId;
