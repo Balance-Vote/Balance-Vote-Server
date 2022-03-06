@@ -1,6 +1,7 @@
 package com.BalanceVote.BalanceVoteServer.contorller;
 
 
+import com.BalanceVote.BalanceVoteServer.dto.ChildCommentForm;
 import com.BalanceVote.BalanceVoteServer.dto.ParentCommentForm;
 import com.BalanceVote.BalanceVoteServer.entity.ChildComment;
 import com.BalanceVote.BalanceVoteServer.entity.ParentComment;
@@ -49,4 +50,10 @@ public class CommentController {
         return savedParentComment;
     }
 
+    @PostMapping("/comment/create-comment/child")
+    public ChildComment addChildComment(@RequestBody ChildCommentForm dto){
+        ChildComment childComment = dto.toEntity();
+        ChildComment savedChildComment = childCommentRepository.save(childComment);
+        return savedChildComment;
+    }
 }
