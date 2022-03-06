@@ -21,7 +21,7 @@ public class VotePosition {
     private Long id;
 
     @Column(name="selected_pos")
-    private String selected_pos;
+    private String selectedPos;
     @Column(name = "post_id")
     private String postId;
     @Column(name = "uuid")
