@@ -28,7 +28,10 @@ jobs:
     - name: Set properties
       env:
         PROPS: ${{ secrets.PROPERTIES }}
-      run: echo "$PROPS" > ./src/main/resources/application.properties
+      run: |
+        mkdir ./src/main/resources
+        touch ./src/main/resources/application.properties
+        echo "$PROPS" > ./src/main/resources/application.properties
     - name: Build with Gradle
       uses: gradle/gradle-build-action@937999e9cc2425eddc7fd62d1053baf041147db7
       with:
