@@ -8,6 +8,10 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Parent Comment DTO
+ * @author JunmanChoi
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,7 +21,9 @@ public class ParentCommentForm {
     private Integer likeCnt;
     private String postId;
     private String uuid;
-
+    /**
+     * Converts data into ParentComment object
+     */
     public ParentComment toEntity(){
         if(timeStamp == null){
             LocalDateTime now = LocalDateTime.now();

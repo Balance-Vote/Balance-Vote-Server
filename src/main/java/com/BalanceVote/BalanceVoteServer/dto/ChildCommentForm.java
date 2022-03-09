@@ -1,7 +1,6 @@
 package com.BalanceVote.BalanceVoteServer.dto;
 
 import com.BalanceVote.BalanceVoteServer.entity.ChildComment;
-import com.BalanceVote.BalanceVoteServer.entity.ParentComment;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,6 +8,10 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Child Comment DTO
+ * @author JunmanChoi
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,7 +22,9 @@ public class ChildCommentForm {
     private String parentCmtId;
     private String postId;
     private String uuid;
-
+    /**
+     * Converts data into ChildComment object
+     */
     public ChildComment toEntity(){
         if(timeStamp == null){
             LocalDateTime now = LocalDateTime.now();
