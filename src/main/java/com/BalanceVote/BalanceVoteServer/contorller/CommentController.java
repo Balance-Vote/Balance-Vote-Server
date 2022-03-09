@@ -47,6 +47,16 @@ public class CommentController {
         return userComments;
     }
     /**
+     * Get all comments that are under current parentCmtId
+     * @param parentCmtId
+     * pathVariable that comes from url
+     */
+    @GetMapping("/comment/get-comment/child/parent-id/{parentCmtId}")
+    public List<ChildComment> getChildComment(@PathVariable String parentCmtId){
+        List<ChildComment> childComments = childCommentRepository.findAllByParentCmtId(parentCmtId);
+        return childComments;
+    }
+    /**
      * Create a parent-comment
      * @param dto
      * parent comment form data

@@ -8,4 +8,5 @@ import java.util.Optional;
 
 public interface ChildCommentRepository extends JpaRepository<ChildComment, Long> {
     List<ChildComment> findAllByUuid(String uuid);
+    List<ChildComment> findAllByParentCmtId(String parentCmtId);
 }
