@@ -33,13 +33,9 @@ public class CommentController {
     }
 
     @GetMapping("/comment/get-comment/all/user/{uuid}")
-    public List getUserParentComment(@PathVariable String uuid){
-        List<ParentComment> parentComments = parentCommentRepository.findAllByUuid(uuid);
-        List<ChildComment> childComments = childCommentRepository.findAllByUuid(uuid);
-        ArrayList allComments = new ArrayList<>();
-        allComments.addAll(parentComments);
-        allComments.addAll(childComments);
-        return allComments;
+    public List<ParentComment> getUserParentComment(@PathVariable String uuid){
+        List<ParentComment> userComments = parentCommentRepository.findUserComments(uuid);
+        return userComments;
     }
 
     @PostMapping("/comment/create-comment/parent")
