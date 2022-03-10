@@ -26,7 +26,9 @@ public class ChildComment {
     @Column(name = "like_cnt")
     private Integer likeCnt;
     @Column(name = "parent_id")
-    private String parentId;
+    private String parentCmtId;
+    @Column(name = "post_id")
+    private String postId;
     @Column(name = "uuid")
     private String uuid;
 }
