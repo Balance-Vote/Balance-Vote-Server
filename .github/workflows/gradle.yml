@@ -46,6 +46,9 @@ jobs:
     # JAR file copy from build/libs
     - name: Copy Jar
       run: cp ./build/libs/*SNAPSHOT.jar ./deploy/
+    # appspec.yml Copy
+    - name: Copy appspec
+      run: cp appspec.yml ./deploy/
     # transfer file as .zip
     - name: Make zip file
       run: zip -r -qq -j ./balance-vote-server.zip ./deploy
