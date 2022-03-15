@@ -5,7 +5,7 @@ files:
     destination: /home/ubuntu/deploy
 permissions:
   - object: /
-    pattern "**"
+    pattern: "**"
     owner: ubuntu
     group: ubuntu
 
