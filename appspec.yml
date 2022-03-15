@@ -3,3 +3,18 @@ os: linux
 files:
   - source: /
     destination: /home/ubuntu/deploy
+permissions:
+  - object: /
+    pattern "**"
+    owner: ubuntu
+    group: ubuntu
+
+hooks:
+  AfterInstall:
+    - location: stop.sh #  Stop current running server
+      timeout: 60
+      runas: ubuntu
+  ApplicationStart:
+    - location: deploy.sh
+      timeout: 60
+      runas: ubuntu
