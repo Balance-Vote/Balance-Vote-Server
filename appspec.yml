@@ -12,10 +12,10 @@ permissions:
 hooks:
   BeforeInstall:
   AfterInstall:
-    - location: scripts/stop.sh #  Stop current running server
+    - location: /stop.sh #  Stop current running server
       timeout: 60
       runas: ubuntu
   ApplicationStart:
-    - location: scripts/deploy.sh
+    - location: /deploy.sh
       timeout: 60
       runas: ubuntu
