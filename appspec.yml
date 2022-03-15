@@ -5,7 +5,7 @@ files:
     destination: /home/ubuntu/deploy
 permissions:
   - object: /
-    pattern: 775
+    pattern: "**"
     owner: ubuntu
     group: ubuntu
 
@@ -14,8 +14,8 @@ hooks:
   AfterInstall:
     - location: /stop.sh #  Stop current running server
       timeout: 60
-      runas: root
+      runas: ubuntu
   ApplicationStart:
     - location: /deploy.sh
       timeout: 60
-      runas: root
+      runas: ubuntu
