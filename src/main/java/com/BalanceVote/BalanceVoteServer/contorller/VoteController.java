@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.BalanceVote.BalanceVoteServer.dto.VotePostCreateForm;
 import com.BalanceVote.BalanceVoteServer.entity.VotePost;
+import com.BalanceVote.BalanceVoteServer.repository.ParentCommentRepository;
 import com.BalanceVote.BalanceVoteServer.repository.VotePostRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class VoteController {
     
     @Autowired
     private VotePostRepository votePostRepository;
+   
+    @Autowired
+    private ParentCommentRepository parentCommentRepository;
 
     /**
      * Search all vote posts.
@@ -51,6 +55,16 @@ public class VoteController {
             count = 1;
         }
         return votePostRepository.findAllByVoteCount(count);
+    }
+
+    /**
+     * Get most commented posts in Desc order.
+     * @author DongGeon Lee
+     */
+    @GetMapping("/post/most-voted")
+    public VotePost getMostCommentedPosting(){
+        String postId = parentCommentRepository.findPostIdByCommentCount();
+        return votePostRepository.findByPostId(postId).orElse(null);
     }
 
     /**
