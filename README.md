@@ -1,3 +1,3 @@
 # Balance-Vote-Server
 
-- 서버 -
+[![Java CI with Gradle](https://github.com/Balance-Vote/Balance-Vote-Server/actions/workflows/gradle.yml/badge.svg)](https://github.com/Balance-Vote/Balance-Vote-Server/actions/workflows/gradle.yml)
