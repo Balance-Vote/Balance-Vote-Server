@@ -46,7 +46,7 @@ public class VoteController {
      * @author DongGeon Lee
      */
     @GetMapping("/post/most-voted")
-    public List<VotePost> getMostVotedPostinPeriod(int count){
+    public List<VotePost> getMostVotedPosting(int count){
         if (count < 1) {
             count = 1;
         }
