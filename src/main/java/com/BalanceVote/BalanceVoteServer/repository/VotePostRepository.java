@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 /**
- * User Repositiory extending CrudRepository
+ * VotePost Repositiory extending JpaRepository
  * @author DongGeon Lee
  */
 public interface VotePostRepository extends JpaRepository<VotePost, Long>{

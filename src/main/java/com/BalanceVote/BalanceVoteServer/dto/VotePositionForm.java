@@ -15,10 +15,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class VotePositionForm {
     private String selectedPos;
-    private String postId;
     private String uuid;
 
     public VotePosition toEntity(){
-        return new VotePosition(null, selectedPos, postId, uuid);
+        return new VotePosition(null, selectedPos, null, uuid);
     }
 }
