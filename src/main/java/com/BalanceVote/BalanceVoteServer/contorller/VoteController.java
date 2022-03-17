@@ -2,9 +2,12 @@ package com.BalanceVote.BalanceVoteServer.contorller;
 
 import java.util.List;
 
+import com.BalanceVote.BalanceVoteServer.dto.VotePositionForm;
 import com.BalanceVote.BalanceVoteServer.dto.VotePostCreateForm;
+import com.BalanceVote.BalanceVoteServer.entity.VotePosition;
 import com.BalanceVote.BalanceVoteServer.entity.VotePost;
 import com.BalanceVote.BalanceVoteServer.repository.ParentCommentRepository;
+import com.BalanceVote.BalanceVoteServer.repository.VotePositionRepository;
 import com.BalanceVote.BalanceVoteServer.repository.VotePostRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,9 @@ public class VoteController {
     
     @Autowired
     private VotePostRepository votePostRepository;
+   
+    @Autowired
+    private VotePositionRepository votePositionRepository;
    
     @Autowired
     private ParentCommentRepository parentCommentRepository;
@@ -61,10 +67,37 @@ public class VoteController {
      * Get most commented posts in Desc order.
      * @author DongGeon Lee
      */
-    @GetMapping("/post/most-voted")
+    @GetMapping("/post/most-commented")
     public VotePost getMostCommentedPosting(){
         String postId = parentCommentRepository.findPostIdByCommentCount();
         return votePostRepository.findByPostId(postId).orElse(null);
+    }
+
+    /**
+     * Vote post.
+     * @author DongGeon Lee
+     */
+    @PostMapping("/post/vote-post/{postId}")
+    public Boolean votePost(String postId, @RequestBody VotePositionForm votePosition){
+        VotePost vp = votePostRepository.findByPostId(postId).orElse(null);
+        if (vp == null) {
+            return false;
+        }
+
+        if(votePosition.getSelectedPos().equals("1")) {
+            vp.setVoteCntOne(vp.getVoteCntOne() + 1);
+        } else if(votePosition.getSelectedPos().equals("2")) {
+            vp.setVoteCntTwo(vp.getVoteCntTwo() + 1);
+        } else {
+            return false;
+        }
+        votePostRepository.save(vp);
+
+        VotePosition votePos = votePosition.toEntity();
+        votePos.setPostId(postId);
+        votePositionRepository.save(votePos);
+
+        return true;
     }
 
     /**
