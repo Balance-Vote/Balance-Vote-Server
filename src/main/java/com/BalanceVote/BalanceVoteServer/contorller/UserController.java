@@ -3,6 +3,8 @@ package com.BalanceVote.BalanceVoteServer.contorller;
 import com.BalanceVote.BalanceVoteServer.dto.UserForm;
 import com.BalanceVote.BalanceVoteServer.entity.User;
 import com.BalanceVote.BalanceVoteServer.repository.UserRepository;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +27,7 @@ public class UserController {
      * @return List : List of User
      */
     @GetMapping("/user/get-user")
+    @ApiOperation(value = "유저 목록 조회", notes = "전체 유저 목록 조회")
     public List<User> getAllUsers(){
         return userRepository.findAll();
     }
@@ -35,7 +38,9 @@ public class UserController {
      * @return User
      */
     @GetMapping("/user/get-user/{id}")
-    public User getUser(@PathVariable Long id){
+    @ApiOperation(value = "특정 유저 조회", notes = "ID값에 따른 특정 유저 정보 조회")
+    @ApiImplicitParam(name="id", required = true,value = "사용자 ID",dataType = "int")
+    public User getUser(@PathVariable(name="id") Long id){
 
         log.info("id searched : {} ",id);
         User searchedUser = userRepository.findById(id).orElse(null);
@@ -48,6 +53,7 @@ public class UserController {
      * @return User
      */
     @PostMapping("/user/create-user")
+    @ApiOperation(value = "유저 생성", notes = "유저 신규 생성")
     public User createUser(@RequestBody UserForm dto){
         log.info(dto.toString());
         User user = dto.toEntity(); //get a user object without id
