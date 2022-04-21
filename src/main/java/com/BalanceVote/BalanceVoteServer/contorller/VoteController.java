@@ -105,13 +105,13 @@ public class VoteController {
      * @author DongGeon Lee
      */
     @PostMapping("/post/vote-post")
-    public String postNewVote(@RequestBody VotePostCreateForm newVoteForm){
+    public VotePost postNewVote(@RequestBody VotePostCreateForm newVoteForm){
         // TODO: verify uuid.
         VotePost voteToPost = newVoteForm.toEntity();
         // TODO: create new unique postid.
         voteToPost.setPostId(voteToPost.getUuid() + System.currentTimeMillis());
-        String voteId = votePostRepository.save(voteToPost).getPostId();
-
-        return voteId;
+        VotePost newPost = votePostRepository.save(voteToPost);
+        log.info(newPost.toString());
+        return newPost;
     }
 }
