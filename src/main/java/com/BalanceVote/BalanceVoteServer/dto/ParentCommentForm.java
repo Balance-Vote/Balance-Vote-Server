@@ -24,7 +24,7 @@ public class ParentCommentForm {
     @ApiModelProperty(hidden = true)
     private Integer likeCnt;
     @ApiModelProperty(example = "1", value = "게시물 ID",required = true)
-    private Long postId;
+    private String postId;
     @ApiModelProperty(example = "junman95", value = "범용 고유 식별자",required = true)
     private String uuid;
     /**
