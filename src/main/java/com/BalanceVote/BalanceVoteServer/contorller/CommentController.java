@@ -36,7 +36,7 @@ public class CommentController {
      */
     @GetMapping("/comment/get-comment/parent/post-id/{postId}")
     @ApiOperation(value = "포스트 댓글 조회", notes = "특정 포스트의 부모 댓글(1차댓글) 조회")
-    @ApiImplicitParam(name="postId", required = true,value = "게시물 ID",dataType = "int")
+    @ApiImplicitParam(name="postId", required = true,value = "게시물 ID",dataType = "string")
     public List<ParentComment> getPostParentComment(@PathVariable String postId){
         return parentCommentRepository.findAllByPostId(postId);
     }
