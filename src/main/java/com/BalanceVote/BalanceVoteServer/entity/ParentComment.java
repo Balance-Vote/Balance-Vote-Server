@@ -33,7 +33,7 @@ public class ParentComment {
     private Integer likeCnt;
     @Column(name = "post_id")
     @ApiModelProperty(example = "1",value = "게시글 ID")
-    private Long postId;
+    private String postId;
     @Column(name = "uuid")
     @ApiModelProperty(example = "junman95",value = "범용 고유 식별자")
     private String uuid;

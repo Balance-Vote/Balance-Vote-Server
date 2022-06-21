@@ -26,7 +26,7 @@ public class ChildCommentForm {
     @ApiModelProperty(example = "1", value = "부모 댓글 ID",required = true)
     private Long parentCmtId;
     @ApiModelProperty(example = "1", value = "게시물 ID",required = true)
-    private Long postId;
+    private String postId;
     @ApiModelProperty(example = "junman95", value = "범용 고유 식별자",required = true)
     private String uuid;
     /**
